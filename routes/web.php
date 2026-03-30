@@ -25,9 +25,9 @@ Route::middleware('auth')->group(function () {
     // Dashboard & Journal Entries
     Route::get('/dashboard', [JournalController::class, 'index'])->name('dashboard');
     Route::get('/journals/create', [JournalController::class, 'create'])->name('journals/create');
-    Route::post('/journals', [JournalController::class, 'store'])->name('journals.store');
-    Route::put('/journals/{id}', [JournalController::class, 'update'])->name('journals.update');
-    Route::delete('/journals/{id}', [JournalController::class, 'destroy'])->name('journals.delete');
+    Route::post('/journals/store', [JournalController::class, 'store'])->name('journals/store');
+    Route::put('/journals/{id}', [JournalController::class, 'update'])->name('journals/update');
+    Route::delete('/journals/{id}', [JournalController::class, 'destroy'])->name('journals/delete');
 
     // Profile
     Route::get('/profile', function () {
