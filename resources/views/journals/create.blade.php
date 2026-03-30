@@ -41,7 +41,7 @@
         text-align: center;
         color: var(--navy-text, #153B50);
         font-size: 1.2rem;
-        margin-right: 1.5rem; /* Offsets the back button to perfectly center the date */
+        margin-right: 1.5rem;
     }
     .title-input {
         border: none;
@@ -117,7 +117,6 @@
 </style>
 
 <div class="create-entry-page">
-    {{-- Form submits to the existing journals.store route --}}
     <form action="{{ route('journals/store') }}" method="POST" class="create-entry-card">
         @csrf
 
@@ -128,9 +127,27 @@
 
         <input type="text" name="title" class="form-control title-input" placeholder="Enter title" required autofocus>
 
+        <div class="d-flex align-items-center gap-4 mb-3">
+            <select name="mood" class="form-select border-0 bg-transparent shadow-none p-0" style="color: var(--navy-text); font-weight: 500; font-size: 1rem; width: auto; cursor: pointer;">
+                <option value="">+ Add Mood</option>
+                <option value="Happy">Happy</option>
+                <option value="Sad">Sad</option>
+                <option value="Excited">Excited</option>
+                <option value="Calm">Calm</option>
+                <option value="Anxious">Anxious</option>
+                <option value="Productive">Productive</option>
+            </select>
+
+            <div class="form-check d-flex align-items-center gap-2 m-0">
+                <input class="form-check-input mt-0" type="checkbox" name="is_favorite" value="1" id="favoriteCheck" style="cursor: pointer;">
+                <label class="form-check-label" for="favoriteCheck" style="color: var(--navy-text); font-weight: 500; font-size: 1rem; cursor: pointer;">
+                    <i class="bi bi-star-fill text-warning"></i> Favorite
+                </label>
+            </div>
+        </div>
+
         <hr class="editor-divider">
 
-        {{-- Visual rich text toolbar matching the mockup --}}
         <div class="editor-toolbar">
             <i class="bi bi-type-bold"></i>
             <span class="divider-vertical">|</span>

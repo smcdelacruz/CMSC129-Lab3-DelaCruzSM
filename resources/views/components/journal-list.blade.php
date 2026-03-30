@@ -1,4 +1,3 @@
-{{-- This file contains ONLY the list HTML so it can be swapped out via AJAX --}}
 @if($isLoading)
     <div class="loading-entries text-center mt-5 text-muted">Loading entries...</div>
 @elseif($groupedJournals->isEmpty())

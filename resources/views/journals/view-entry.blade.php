@@ -51,7 +51,7 @@
         color: var(--navy-text, #153B50);
         padding: 0;
         margin-bottom: 0.5rem;
-        cursor: default; /* Remove text-input cursor for readonly */
+        cursor: default;
     }
     .title-input:focus {
         outline: none;
@@ -68,8 +68,8 @@
         margin-bottom: 1.5rem;
         color: #333;
         font-size: 1.1rem;
-        opacity: 0.4; /* Dim the toolbar to show it's read-only */
-        pointer-events: none; /* Prevents clicking the tools */
+        opacity: 0.4;
+        pointer-events: none;
     }
     .editor-toolbar .divider-vertical {
         color: #ccc;
@@ -84,7 +84,7 @@
         resize: none;
         padding: 0;
         color: #333;
-        cursor: default; /* Remove text-input cursor for readonly */
+        cursor: default;
     }
     .content-input:focus {
         outline: none;
@@ -97,21 +97,31 @@
     <div class="create-entry-card">
 
         <div class="create-header">
-            {{-- We use javascript history.back() so that if they came from the Dashboard OR the Trash page, it takes them back to the correct place seamlessly! --}}
             <a href="javascript:history.back()" class="back-btn"><i class="bi bi-chevron-left"></i></a>
 
             <div class="date-display">{{ $journal->created_at->format('m/d/Y') }}</div>
         </div>
 
-        {{-- Added readonly attribute so it cannot be modified --}}
         <input type="text" class="form-control title-input" value="{{ $journal->title }}" readonly>
+
+        <div class="d-flex align-items-center gap-3 mb-3">
+            @if($journal->mood)
+                <span class="badge rounded-pill px-3 py-2" style="background-color: var(--pink-btn); color: var(--navy-text); font-weight: 500; font-size: 0.95rem;">
+                    Mood: {{ $journal->mood }}
+                </span>
+            @endif
+
+            @if($journal->is_favorite)
+                <span style="color: var(--navy-text); font-weight: 500; font-size: 0.95rem;">
+                    <i class="bi bi-star-fill text-warning"></i> Favorited
+                </span>
+            @endif
+        </div>
 
         <hr class="editor-divider">
 
-        {{-- Added readonly attribute so it cannot be modified --}}
         <textarea class="form-control content-input" readonly>{{ $journal->content }}</textarea>
 
-        {{-- Notice: The Save Button container is completely removed from this view. --}}
     </div>
 </div>
 @endsection

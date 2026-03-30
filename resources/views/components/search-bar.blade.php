@@ -1,7 +1,5 @@
-{{-- Updated action to url()->current() so it works dynamically on both Dashboard AND Trash page! --}}
 <form action="{{ url()->current() }}" method="GET" class="search-bar d-flex align-items-center m-0">
 
-    {{-- Preserve active filters when searching --}}
     @if(request('month'))
         <input type="hidden" name="month" value="{{ request('month') }}">
     @endif

@@ -74,25 +74,26 @@ class JournalController extends Controller
         $request->validate([
             'title' => 'required|string|max:255',
             'content' => 'required|string',
+            'mood' => 'nullable|string|max:50',
         ]);
 
         Journal::create([
             'title' => $request->title,
             'content' => $request->content,
+            'mood' => $request->mood,
+            'is_favorite' => $request->has('is_favorite'),
             'user_id' => Auth::id(),
         ]);
 
         return redirect()->route('dashboard')->with('success', 'Journal created!');
     }
 
-    // NEW: Show a read-only view of a journal
     public function show($id)
     {
-        // Use withTrashed() so you can also view entries that are in the trash bin!
         $journal = Journal::withTrashed()->findOrFail($id);
         $this->authorizeJournal($journal);
 
-        return view('layouts/view-entry', compact('journal'));
+        return view('journals/show', compact('journal'));
     }
 
     public function edit($id)
@@ -108,14 +109,18 @@ class JournalController extends Controller
         $journal = Journal::findOrFail($id);
         $this->authorizeJournal($journal);
 
+        // 2. Added validation for updates
         $request->validate([
             'title' => 'required|string|max:255',
             'content' => 'required|string',
+            'mood' => 'nullable|string|max:50',
         ]);
 
         $journal->update([
             'title' => $request->title,
             'content' => $request->content,
+            'mood' => $request->mood,
+            'is_favorite' => $request->has('is_favorite'),
         ]);
 
         return redirect()->route('dashboard')->with('success', 'Journal updated!');
@@ -131,7 +136,7 @@ class JournalController extends Controller
         return redirect()->route('dashboard')->with('success', 'Journal moved to trash!');
     }
 
-    // --- TRASH FUNCTIONALITY ---
+    // TRASH FUNCTIONALITY
 
     public function trash(Request $request)
     {

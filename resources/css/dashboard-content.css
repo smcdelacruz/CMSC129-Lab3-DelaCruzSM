@@ -1,5 +1,4 @@
-/**** NEW DASHBOARD LAYOUT CSS ****/
-
+/* DASHBOARD LAYOUT CSS */
 :root {
   --navy-text: #153B50;
   --cream-card: #ECEBE4;
@@ -30,7 +29,6 @@ body {
     margin-bottom: 0rem !important;
 }
 
-/* Filter Select Dropdowns Styling (Matches Search Bar) */
 .filter-select {
     border-radius: 50px !important;
     border: 1.5px solid transparent !important;
@@ -43,7 +41,6 @@ body {
     transition: border 0.2s ease-in-out;
     appearance: none;
     -webkit-appearance: none;
-    /* Custom downward chevron arrow */
     background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='none' stroke='%23153B50' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3E%3C/svg%3E") !important;
     background-repeat: no-repeat !important;
     background-position: right 1rem center !important;
@@ -58,7 +55,6 @@ body {
     box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.50) !important;
 }
 
-/* Date Group Header */
 .month-group-header {
     color: var(--navy-text);
     font-size: 1.4rem;
@@ -67,7 +63,6 @@ body {
     margin-bottom: 1rem;
 }
 
-/* Journal Entry Card Styling */
 .journal-entry-card {
     background-color: var(--cream-card);
     border: none;
@@ -119,7 +114,6 @@ body {
     padding-right: 20px;
 }
 
-/* Custom Scrollbar for Journal Lists */
 .journal-list::-webkit-scrollbar {
     width: 8px;
 }
@@ -127,14 +121,13 @@ body {
     background: transparent;
 }
 .journal-list::-webkit-scrollbar-thumb {
-    background: rgba(21, 59, 80, 0.2); /* Var navy-text with opacity */
+    background: rgba(21, 59, 80, 0.2);
     border-radius: 10px;
 }
 .journal-list::-webkit-scrollbar-thumb:hover {
     background: rgba(21, 59, 80, 0.4);
 }
 
-/* Kebab Dropdown Specific Styling */
 .dropdown-toggle-kebab::after {
     display: none !important;
 }

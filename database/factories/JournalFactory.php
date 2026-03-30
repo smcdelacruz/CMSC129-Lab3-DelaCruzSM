@@ -15,11 +15,9 @@ class JournalFactory extends Factory
             'title' => fake()->catchPhrase(),
             'content' => fake()->paragraphs(3, true),
 
-            // Faking our new fields
             'mood' => fake()->randomElement(['Happy', 'Sad', 'Excited', 'Calm', 'Anxious', 'Productive']),
-            'is_favorite' => fake()->boolean(20), // 20% chance to be favorited
+            'is_favorite' => fake()->boolean(20),
 
-            // Random date so our Dashboard grouping works
             'created_at' => fake()->dateTimeBetween('-4 months', 'now'),
         ];
     }

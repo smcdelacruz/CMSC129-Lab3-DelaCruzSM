@@ -117,22 +117,38 @@
 </style>
 
 <div class="create-entry-page">
-    {{-- Form submits to journals.update using PUT --}}
     <form action="{{ route('journals/update', $journal->id) }}" method="POST" class="create-entry-card">
         @csrf
         @method('PUT')
 
         <div class="create-header">
-            <a href="{{ route('dashboard') }}" class="back-btn"><i class="bi bi-chevron-left"></i></a>
-            {{-- Keeps the original creation date of the entry --}}
+            <a href="javascript:history.back()" class="back-btn"><i class="bi bi-chevron-left"></i></a>
             <div class="date-display">{{ $journal->created_at->format('m/d/Y') }}</div>
         </div>
 
         <input type="text" name="title" class="form-control title-input" placeholder="Enter title" value="{{ old('title', $journal->title) }}" required autofocus>
 
+        <div class="d-flex align-items-center gap-4 mb-3">
+            <select name="mood" class="form-select border-0 bg-transparent shadow-none p-0" style="color: var(--navy-text); font-weight: 500; font-size: 1rem; width: auto; cursor: pointer;">
+                <option value="">+ Add Mood</option>
+                <option value="Happy" {{ old('mood', $journal->mood) == 'Happy' ? 'selected' : '' }}>Happy</option>
+                <option value="Sad" {{ old('mood', $journal->mood) == 'Sad' ? 'selected' : '' }}>Sad</option>
+                <option value="Excited" {{ old('mood', $journal->mood) == 'Excited' ? 'selected' : '' }}>Excited</option>
+                <option value="Calm" {{ old('mood', $journal->mood) == 'Calm' ? 'selected' : '' }}>Calm</option>
+                <option value="Anxious" {{ old('mood', $journal->mood) == 'Anxious' ? 'selected' : '' }}>Anxious</option>
+                <option value="Productive" {{ old('mood', $journal->mood) == 'Productive' ? 'selected' : '' }}>Productive</option>
+            </select>
+
+            <div class="form-check d-flex align-items-center gap-2 m-0">
+                <input class="form-check-input mt-0" type="checkbox" name="is_favorite" value="1" id="favoriteCheck" {{ old('is_favorite', $journal->is_favorite) ? 'checked' : '' }} style="cursor: pointer;">
+                <label class="form-check-label" for="favoriteCheck" style="color: var(--navy-text); font-weight: 500; font-size: 1rem; cursor: pointer;">
+                    <i class="bi bi-star-fill text-warning"></i> Favorite
+                </label>
+            </div>
+        </div>
+
         <hr class="editor-divider">
 
-        {{-- Visual rich text toolbar --}}
         <div class="editor-toolbar">
             <i class="bi bi-type-bold"></i>
             <span class="divider-vertical">|</span>

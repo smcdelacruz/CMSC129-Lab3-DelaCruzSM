@@ -3,14 +3,13 @@
 @section('title', 'Dashboard - The Journal')
 
 @section('content')
-    {{-- Changed min-vh-100 to vh-100 overflow-hidden to lock the page height --}}
     <div class="d-flex vh-100 overflow-hidden">
         {{-- Left Sidebar --}}
         <div class="d-flex align-items-center h-100">
             <x-left-sidebar />
         </div>
 
-        {{-- Main Content Area - Added d-flex flex-column h-100 overflow-hidden --}}
+        {{-- Main Content Area --}}
         <div class="main-container flex-grow-1 p-5 position-relative d-flex flex-column h-100 overflow-hidden">
 
             {{-- SUCCESS TOAST NOTIFICATION --}}
@@ -40,7 +39,7 @@
 
             <div class="dashboard-content d-flex flex-column gap-4 flex-grow-1 w-100 overflow-hidden">
 
-                {{-- Header, Filters, & Search - Added flex-shrink-0 so it doesn't compress --}}
+                {{-- Header, Filters, & Search --}}
                 <div class="d-flex flex-wrap justify-content-between align-items-center w-100 gap-3 flex-shrink-0">
                     <p id="dashboard-greetings" class="m-0">
                         Your Journal
@@ -65,7 +64,7 @@
                     </div>
                 </div>
 
-                {{-- Grouped Journal List Container - Added overflow-y-auto and pe-2 (padding-right) for the scrollbar --}}
+                {{-- Grouped Journal List Container --}}
                 <div id="journal-list-container" class="journal-list flex-grow-1 w-100 overflow-y-auto pe-3" style="transition: opacity 0.3s ease;">
                     @include('components/journal-list')
                 </div>

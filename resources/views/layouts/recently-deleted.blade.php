@@ -63,7 +63,6 @@
                         <h3 class="month-group-header" style="color: var(--navy-text); font-size: 1.4rem; font-weight: 500; margin-top: 1.5rem; margin-bottom: 1rem;">{{ $monthYear }}</h3>
 
                         @foreach($entries as $journal)
-                            {{-- Added cursor-pointer, hover scale, and onclick redirect event --}}
                             <div class="journal-entry-card d-flex position-relative w-100" style="cursor: pointer; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.01)'" onmouseout="this.style.transform='scale(1)'" onclick="window.location.href='{{ route('journals/show', $journal->id) }}'">
 
                                 <div class="journal-date-box d-flex flex-column align-items-center justify-content-center" style="background-color: rgba(0,0,0,0.04); border-right: 1px solid rgba(0,0,0,0.04); border-top-left-radius: 16px; border-bottom-left-radius: 16px; min-width: 100px; padding: 15px;">
@@ -75,7 +74,6 @@
                                     <div class="d-flex justify-content-between align-items-start mb-2">
                                         <h5 class="journal-title mb-0" style="color: var(--navy-text); font-weight: 700; font-size: 1.25rem;">{{ $journal->title }}</h5>
 
-                                        {{-- Added event.stopPropagation() so that clicking the dropdown doesn't trigger the card's redirect --}}
                                         <div class="dropdown ms-3" onclick="event.stopPropagation();">
                                             <button class="btn btn-link text-dark p-0 text-decoration-none shadow-none dropdown-toggle-kebab" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                                 <i class="bi bi-three-dots-vertical" style="font-size: 1.2rem; color: var(--navy-text);"></i>

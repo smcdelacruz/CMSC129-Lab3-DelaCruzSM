@@ -24,7 +24,6 @@ class SignupController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-        // Added unique validation to email to prevent duplicates
         $credentials = $request->validate([
             'email' => ['required', 'email', 'unique:users,email'],
             'username' => ['required', 'min:5'],
