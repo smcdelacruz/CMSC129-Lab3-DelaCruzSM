@@ -1,59 +1,207 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# The Journal
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+The Journal is a digitalized personal journal application built with Laravel and MVC pattern that allows users to write, read, edit, and delete their journal entries.
 
-## About Laravel
+## ⚙️ Installation and Setup
+**Step 1. Clone the repository**
+* Open *Command Prompt* in Windows or *Terminal* on Mac.
+* Type or copy these commands below.
+```bash
+git clone https://github.com/CMSC-129-Laboratory-Assignments/CMSC129-Lab2-SombitoC-DelaCruzSM
+cd CMSC129-Lab2-SombitoC-DelaCruzSM
+```
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+**Step 2. Install PHP and Node dependencies**
+```
+composer install      # installs the PHP packages
+npm install           # This will download the node_modules folder
+```
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+**Step 3. Setup Environment Variables**
+* Duplicate the `.env.example` file from the root directory and rename it to `.env`.
+* Generate the application key with this command:
+```
+php artisan key:generate
+```
+The generated key will be automatically pasted in your `.env` file.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### Run Frontend
+To compile the CSS and JS files via Vite, open a new terminal and run this command:
+```
+npm run dev
+```
 
-## Learning Laravel
+---
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+## 🗃️ Database Setup Guide (PostgreSQL Database via Supabase)
+For this application, we use PostgreSQL hosted on **Supabase**.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
-## Laravel Sponsors
+---
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+### Migration Commands
+* Built the database tables using this command:
+```
+php artisan migrate
+```
 
-### Premium Partners
+### Run the Server
+* Open a new terminal and run this command:
+```
+php artisan serve
+```
+* To open the application, *Ctrl + click* the link provided by the server:
+    * `http://localhost:8000`
+* To stop the application from running, type *Ctrl + c*.
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+---
 
-## Contributing
+## 📸 Screenshots
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+![Dashboard View](/public/images/screenshots/dashboard.png)
+**Dashboard Page**
 
-## Code of Conduct
+![Recently Deleted View](/public/images/screenshots/recently_deleted.png)
+**Recently Deleted Page**
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+---
 
-## Security Vulnerabilities
+## 🚀 Features Implemented
+* **User Authentication:** Secure signup, login, and logout functionality.
+* **Journal Entry CRUD:** Create, read, update, and delete personal journal entries.
+* **Dashboard Page:** Display sidebar and the journal entries written by the user.
+* **Profile Management:** Users can update their username, email, and change their passwords.
+* **Trash & Recovery (Soft & Hard Deletes):** Deleted entries are moved to a "Recently Deleted" page where journal entries can be restored or permanently deleted.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+---
 
-## License
+## 📂 MVC Architecture & Project Structure
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+This application follows Laravel's **Model-View-Controller (MVC)** architecture to separate concerns and keep the codebase clean:
+* **Models (`app/Models`):** Handle data logic, database interactions, and relationships (e.g., `User` and `Journal` models).
+* **Views (`resources/views`):** The frontend Blade templates that display the UI to the user.
+* **Controllers (`app/Http/Controllers`):** The middleman that processes incoming HTTP requests, fetches data from the Models, and passes it to the Views.
+
+Here is an overview of our project structure:
+
+# Repository Structure
+
+```
+├── app
+│   ├── Http
+│   │   └── Controllers
+│   │       ├── Controller.php
+│   │       ├── JournalController.php
+│   │       ├── LoginController.php
+│   │       └── SignupController.php
+│   │       └── SignupController.php
+│   ├── Models
+│   │   ├── Journal.php
+│   │   └── User.php
+│   └── Providers
+│       └── AppServiceProvider.php
+├── bootstrap
+│   ├── cache
+│   │   └── .gitignore
+│   ├── app.php
+│   └── providers.php
+├── config
+│   ├── app.php
+│   ├── auth.php
+│   ├── cache.php
+│   ├── database.php
+│   ├── filesystems.php
+│   ├── logging.php
+│   ├── mail.php
+│   ├── queue.php
+│   ├── services.php
+│   └── session.php
+├── database
+│   ├── factories
+│   │   └── UserFactory.php
+│   ├── migrations
+│   │   ├── 0001_01_01_000000_create_users_table.php
+│   │   └── 2026_03_21_124204_create_journals_table.php
+│   ├── seeders
+│   │   └── DatabaseSeeder.php
+│   └── .gitignore
+├── public
+│   ├── images
+│   │   ├── background.jpg
+│   │   ├── journal.png
+│   │   └── logo.png
+│   ├── .htaccess
+│   ├── favicon.ico
+│   ├── index.php
+│   └── robots.txt
+├── resources
+│   ├── css
+│   │   ├── app.css
+│   │   ├── auth-form.css
+│   │   ├── dashboard-content.css
+│   │   ├── left-sidebar.css
+│   │   ├── profile-page.css
+│   │   ├── recently-deleted.css
+│   │   └── search-bar.css
+│   ├── js
+│   │   ├── app.js
+│   │   └── bootstrap.js
+│   └── views
+│       ├── components
+│       │   ├── auth-form.blade.php
+│       │   ├── journal-summary.blade.php
+│       │   ├── journal.blade.php
+│       │   ├── left-sidebar.blade.php
+│       │   ├── profile-button.blade.php
+│       │   └── search-bar.blade.php
+│       └── layouts
+│           ├── app.blade.php
+│           ├── dashboard.blade.php
+│           ├── login.blade.php
+│           ├── profile.blade.php
+│           ├── recently-deleted.blade.php
+│           └── sign-up.blade.php
+├── routes
+│   ├── console.php
+│   └── web.php
+├── storage
+│   ├── app
+│   │   ├── private
+│   │   │   └── .gitignore
+│   │   ├── public
+│   │   │   └── .gitignore
+│   │   └── .gitignore
+│   ├── framework
+│   │   ├── cache
+│   │   │   ├── data
+│   │   │   │   └── .gitignore
+│   │   │   └── .gitignore
+│   │   ├── sessions
+│   │   │   └── .gitignore
+│   │   ├── testing
+│   │   │   └── .gitignore
+│   │   ├── views
+│   │   │   └── .gitignore
+│   │   └── .gitignore
+│   └── logs
+│       └── .gitignore
+├── tests
+│   ├── Feature
+│   │   └── ExampleTest.php
+│   ├── Unit
+│   │   └── ExampleTest.php
+│   └── TestCase.php
+├── .editorconfig
+├── .env.example
+├── .gitattributes
+├── .gitignore
+├── .styleci.yml
+├── artisan
+├── CHANGELOG.md
+├── composer.json
+├── composer.lock
+├── package-lock.json
+├── package.json
+├── phpunit.xml
+├── README.md
+└── vite.config.js

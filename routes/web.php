@@ -3,6 +3,7 @@
 use App\Http\Controllers\JournalController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\SignupController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -26,9 +27,9 @@ Route::put('/journals/{id}', [JournalController::class, 'update'])->name('journa
 Route::delete('/journals/{id}', [JournalController::class, 'destroy'])->name('journals/delete');
 
 // profile
-Route::get('/profile', function () {
-    return view('layouts.profile');
-})->name('profile');
+Route::get('/profile', [ProfileController::class, 'edit'])->name('profile');
+Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+Route::put('/password', [ProfileController::class, 'updatePassword'])->name('password.update');
 
 // recently deleted
 Route::get('/recently-deleted', function () {
