@@ -33,7 +33,6 @@
                     <button type="button" class="btn btn-pink" data-bs-toggle="modal" data-bs-target="#passwordModal">Change your password</button>
                 </div>
 
-                {{-- These buttons are hidden until "Edit your profile" is clicked --}}
                 <div id="profileActionButtons" class="d-none d-flex justify-content-end gap-3 mt-5">
                     <button type="button" class="btn btn-gray" onclick="cancelEdit()">Cancel</button>
                     <button type="submit" class="btn btn-purple">Save changes</button>
@@ -46,7 +45,6 @@
 {{-- Update Password Modal --}}
 <div class="modal fade" id="passwordModal" tabindex="-1" data-bs-backdrop="static">
     <div class="modal-dialog modal-dialog-centered">
-        {{-- Reusing the profile-card class to keep the original theme --}}
         <div class="modal-content profile-card" style="padding: 30px;">
             <div class="text-center mb-4">
                 <h4 class="profile-label" style="font-size: 1.3rem;">Update Your Password</h4>
@@ -131,13 +129,11 @@
         document.getElementById('editProfileBtn').classList.remove('d-none');
     }
 
-    // Helper to force display a modal when Bootstrap's JS isn't globally loaded
     function showFallbackModal(modalId) {
         const modal = document.getElementById(modalId);
         if (typeof bootstrap !== 'undefined' && bootstrap.Modal) {
             new bootstrap.Modal(modal).show();
         } else {
-            // Bulletproof vanilla JS fallback
             modal.classList.add('show');
             modal.style.display = 'block';
             modal.style.backgroundColor = 'rgba(0,0,0,0.5)';
