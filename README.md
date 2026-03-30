@@ -36,13 +36,29 @@ npm run dev
 ## 🗃️ Database Setup Guide (PostgreSQL Database via Supabase)
 For this application, we use PostgreSQL hosted on **Supabase**.
 
+To successfully connect the application to the database, you must configure your environment variables.
 
+Step 1. Open your .env file
+Open the .env file you created during the installation process in your code editor.
+
+Step 2. Update Database Configuration
+Locate the block of variables starting with DB_CONNECTION. Replace the default MySQL/SQLite settings with the following Supabase PostgreSQL credentials:
+
+DB_CONNECTION=pgsql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=laravel
+DB_USERNAME=root
+DB_PASSWORD=
+
+
+(Note: Ensure there are no spaces around the = signs).
 ---
 
 ### Migration Commands
 * Built the database tables using this command:
 ```
-php artisan migrate
+php artisan migrate:fresh --seed
 ```
 
 ### Run the Server
