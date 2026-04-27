@@ -2,6 +2,41 @@
 
 The Journal is a digitalized personal journal application built with Laravel and MVC pattern that allows users to write, read, edit, and delete their journal entries.
 
+## 🤖 AI Chabot Integration (Lab Assignment 3)
+This journal application features a fully integrated AI Journal Assistant powered by Gemini AI designed to help users reflect on their journal entries.
+
+### AI Features
+* **Floating Chat Widget:** A seamless, non-intrusive UI that floats on the bottom-right of the dashboard page.
+* **Context-Aware Inquiries:** The AI assistant answers questions based strictly on the user's own journal entries.
+* **API Isolation:** the AI never connects to the database. It triggers a secure backend Laravel API endpoint `/api/users{id}/journals` which fetches the data locally via Eloquent and returns JSON context to the AI model.
+* **Multilingual Support:** The assistant can converse and understand context in English, Tagalog, Hiligaynon, and Taglish.
+
+### AI Service Used
+* **Provider:** Google Gemini API
+* **Model:** gemini-2.5-flash
+* **Library:** gemini-api-php/laravel
+
+### Setup Instructions
+To enable AI chatbot functionality, configure a Gemini API Key first.
+1. Visit [Google AI Studio](https://aistudio.google.com/) and sign in with your Google account.
+2. Click **Get API Key** and generate a new key. Copy the API key.
+3. Open your `.env` file and paste the API key on your `GEMINI_API_KEY=your_generated_api_key_here`.
+
+### Example Queries To Try
+* *"What did I write about last March?"*
+* *"Show me all entries where my mood was Happy."*
+* *"Ilan ang mga journal entries na sinulat ko noong Abril?"*
+* *"Did I mention about strategy?"*
+
+### Screenshots
+![AI Chatbot](/public/images/screenshots/chatbot-widget.png)
+**Dashboard Page w/ AI Journal Chatbot**
+
+![Expanded AI Chatbot](/public/images/screenshots/ai-chatbox.png)
+**Expanded AI Journal Chatbot**
+
+---
+
 ## ⚙️ Installation and Setup
 **Step 1. Clone the repository**
 * Open *Command Prompt* in Windows or *Terminal* on Mac.

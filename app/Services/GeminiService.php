@@ -36,7 +36,7 @@ class GeminiService {
             "1. Base your answers ONLY on the API data provided. Do not make assumptions.\n" .
             "2. Suggest what to do with their entries based on app features (favorite, delete).\n" .
             "3. Be empathetic and supportive.\n" .
-            "4. Match the user's language (English, Tagalog, Hiligaynon).\n" .
+            "4. You are allowed to speak in English, Tagalog, Taglish, or Hiligaynon, depending on the user's language. Match the user's language (English, Tagalog, Hiligaynon, or Taglish).\n" .
             "5. DO NOT use markdown formatting (no asterisks). Use plain text only.\n";
 
         // Fetch the chat history
