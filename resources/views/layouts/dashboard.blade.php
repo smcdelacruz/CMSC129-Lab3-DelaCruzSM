@@ -154,5 +154,6 @@
     </script>
 
     {{-- AI Chatbot Widget --}}
-    @include('components.chatbot-widget')
+    @include('chat.components.chatbot-widget')
+    {{-- <x-chatbot-widget /> --}}
 @endsection
